@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { Wrapper } from "@googlemaps/react-wrapper";
+import { useState } from 'react';
+import { Map } from './components/Map';
+import { Marker } from './components/Marker';
 
-function App() {
+const POS_TOKYO_STATION = { lat: 35.681, lng: 139.767 };
+
+const App = () => {
+  const [ markerPosition, setMarkerPosition ] = useState(null);
+
+  const onClick = async (e) => {
+    const pos = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+    setMarkerPosition(pos);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper apiKey={process.env.REACT_APP_MAP_API_KEY}>
+      <Map center={POS_TOKYO_STATION} zoom={14} onClick={onClick}>
+        <Marker position={markerPosition} />
+      </Map>
+    </Wrapper>
   );
 }
 
