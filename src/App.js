@@ -5,6 +5,7 @@ import { WeatherDisplay } from './components/WeatherDisplay';
 import { Map } from './components/Map';
 import { Marker } from './components/Marker';
 
+// デフォルトで表示する座標（東京駅）
 const POS_TOKYO_STATION = { lat: 35.681, lng: 139.767 };
 
 const App = () => {

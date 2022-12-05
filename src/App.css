@@ -1,3 +1,12 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
 .map {
   width: 100vw;
   height: 100vh;
@@ -7,13 +16,113 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 200px;
   height: 100vh;
-  background-color: #fff;
+  padding: 56px 16px 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-right: solid 1px #ddd;
   transform: translateX(100%);
   transition: transform 0.3s;
 }
 
-.weather--open {
+.weather.weather--open {
   transform: translateX(0);
+}
+
+.weather__toggle {
+  position: absolute;
+  top: 16px;
+  left: -48px;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: left 0.3s;
+}
+
+
+.weather__toggle::after {
+  position: absolute;
+  top: 33%;
+  left: 40%;
+  content: '';
+  width: 16px;
+  height: 16px;
+  border-top: solid 2px #3399ff;
+  border-right: solid 2px #3399ff;
+  transform: rotate(-135deg);
+
+}
+
+.weather.weather--open .weather__toggle {
+  left: 8px;
+  background-color: transparent;
+}
+
+.weather.weather--open .weather__toggle::after {
+  transform: rotate(45deg);
+  left: 23%;
+}
+
+.weather__time_wrap {
+  padding: 8px;
+  margin-top: 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3399ff;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.weather__time {
+  font-size: 1.5rem;
+}
+
+.weather__icon_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+  color: #666;
+}
+
+.weather__icon {
+  width: 150px;
+  height: 150px;
+}
+
+.weather__arrow {
+  width: 12px;
+  height: 30px;
+  transform-origin: center center;
+}
+
+.weather__list {
+  padding: 32px 16px;
+}
+
+.weather__item {
+  font-size: 2rem;
+  color: #666;
+}
+
+.weather__item:not(:first-of-type) {
+  margin-top: 16px;
+}
+
+.weather__item_name {
+  font-size: 1rem;
+  margin-right: 16px;
+}
+
+.weather__item_content {
+  display: flex;
+}
+
+.weather__arrow_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
 }
